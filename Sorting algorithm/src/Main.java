@@ -12,8 +12,11 @@ public class Main {
 
         BubbleSort bubbleSort=new BubbleSort(array);
         System.out.println(Arrays.toString(array));
-         */
+
         InsertionSort insertionSort=new InsertionSort(array);
         System.out.println(Arrays.toString(array));
+
+         */
+        MergeSort mergeSort=new MergeSort(array);
     }
 }

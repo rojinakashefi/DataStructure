@@ -12,6 +12,5 @@ public class HanoiTower {
         hanoiTower(n - 1, start, between, end);
         System.out.println("move disk " + n + " from " + start + " to " + end);
         hanoiTower(n - 1, between, end, start);
-
     }
 }

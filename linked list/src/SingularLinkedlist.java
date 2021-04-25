@@ -1,10 +1,33 @@
 import java.util.Iterator;
 
+/**
+ * Singular linked list
+ * each node has a next node and value
+ * Size -> O(1)
+ * Empty ->O(1)
+ * AddLast -> O(1)
+ * AddFirst ->O(1)
+ * IndexOf -> O(n)
+ * Insert (not first and last) ->O(n)
+ * Contains -> O(n)
+ * Remove element -> O(n)
+ * Remove at-> finding index ->O(n)
+ * RemoveFirst -> O(1)
+ * RemoveLast ->O(n)
+ * PeekFirst -> O(1)
+ * PeekLast -> O(1)
+ * ToString -> O(n)
+ * @author rojina
+ * @since April 2021
+ */
 public class SingularLinkedlist<T> implements Iterable<T> {
 
     int size;
     node<T> head, tail;
 
+    /**
+     * Creating node
+     */
     private static class node<T> {
         T data;
         node<T> next;
@@ -15,24 +38,44 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * Constructor for singular linkedlist
+     */
     public SingularLinkedlist() {
         size = 0;
         tail = head = null;
     }
 
+    /**
+     * size of linked list
+     * @return size of linked list
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Check if linked list is empty
+     * @return if linked list is empty or not
+     */
     public boolean isEmpty() {
         return size == 0;
     }
 
+    /**
+     * adding an element with value of data
+     * creating node adding to tail next
+     * @param data as value we want to make node with
+     */
     public void addLast(T data) {
         addLast(new node<>(data, null));
         size++;
     }
 
+    /**
+     * we call this method in previous method
+     * @param last as node we want to be tail
+     */
     private void addLast(node<T> last) {
         if (size == 0) {
             head = tail = last;
@@ -42,11 +85,19 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * adding an element to first of linked list
+     * @param data as value of node we want to be head
+     */
     public void addFirst(T data) {
         addFirst(new node<>(data, head));
         size++;
     }
 
+    /**
+     * we call this method in previous method
+     * @param first as node we want to be head of list
+     */
     private void addFirst(node<T> first) {
         if (size == 0) {
             head = tail = first;
@@ -55,6 +106,11 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * we want to find index of element -> O(n)
+     * @param element as element we want to get index of
+     * @return index of element
+     */
     public int indexOf(T element) {
         node<T> tmp = head;
         for (int i = 0; i < size; i++, tmp = tmp.next) {
@@ -65,6 +121,13 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         return -1;
     }
 
+    /**
+     * if we want to insert in first place -> addFirst() ->O(1)
+     * if we want to insert in last place -> addLast() ->O(1)
+     * if we want to insert in middle of list ->O(n)
+     * @param element as element we want to insert
+     * @param index we want to add
+     */
     public void insert(T element, int index) {
         if (index < 0 || index > size) {
             throw new IndexOutOfBoundsException("index is valid");
@@ -83,6 +146,11 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * if our list contains of specific element ->O(n)
+     * @param element as element we are looking for in a list
+     * @return if our list contains our element
+      */
     public boolean contain(T element) {
         for (node<T> tmp = head; tmp != null; tmp = tmp.next) {
             if (tmp.data.equals(element)) {
@@ -92,6 +160,10 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         return false;
     }
 
+    /**
+     * we should find the index of element to remove it ->O(n)
+     * @param element as element we want to remove
+     */
     public void remove(T element) {
         node<T> temp = head;
         for (int i = 0; i < size; i++) {
@@ -103,11 +175,18 @@ public class SingularLinkedlist<T> implements Iterable<T> {
 
     }
 
+    /**
+     * Remove from list using index
+     * if index ==0 remove first element -> O(1)
+     * if index==size-1 remove last element -> O(1)
+     * if its middle it takes -> O(n)
+     * @param index we want to remove from list
+     */
     public void removeAt(int index) {
         if (index == 0) {
-            //removeFirst();
+            removeFirst();
         } else if (index == size - 1) {
-            //removeLast
+            removeLast();
         } else {
             node<T> tmp = head;
             for (int i = 0; i < index - 1; i++) {
@@ -119,6 +198,12 @@ public class SingularLinkedlist<T> implements Iterable<T> {
 
     }
 
+    /**
+     * removing first element
+     * no time for searching to find the element
+     * we know what it is because we know head and tail -> o(1)
+     *
+     */
     public void removeFirst() {
         if (size == 0) {
             throw new IndexOutOfBoundsException("no element to remove");
@@ -131,6 +216,10 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * removing the last element based on tail
+     * to find previous element of tail we should iterate to find it and make it tail of list -> O(n)
+     */
     public void removeLast() {
         if (size == 0) {
             throw new IndexOutOfBoundsException("no element to remove");
@@ -147,6 +236,10 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         }
     }
 
+    /**
+     * return head value
+     * @return value of head
+     */
     public T peekFirst() {
         if (size != 0) {
             return head.data;
@@ -154,6 +247,10 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         return null;
     }
 
+    /**
+     * return tail value
+     * @return value of tail
+     */
     public T peekLast() {
         if (size != 0) {
             return tail.data;
@@ -161,6 +258,10 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         return null;
     }
 
+    /**
+     * making string by iterating throw our list -> O(n)
+     * @return string of our linked list
+     */
     @Override
     public String toString() {
         StringBuilder stringBuilder = new StringBuilder();
@@ -171,6 +272,11 @@ public class SingularLinkedlist<T> implements Iterable<T> {
         stringBuilder.append(']');
         return stringBuilder.toString();
     }
+
+    /**
+     * used for each
+     * @return iterator of our program
+     */
     public Iterator<T> iterator(){
         return new Iterator<T>() {
             node<T> temp=head;

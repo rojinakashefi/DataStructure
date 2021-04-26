@@ -1,3 +1,13 @@
+/**
+ * Linked list
+ * Three types of list:
+ * 1)Singular linked list
+ * 2)Doubly linked list
+ * 3)Circular linked list
+ * @author rojina kashefi
+ * @since April 2021
+ * @version 1.0
+ */
 public class Main {
 
     public static void main(String[] args) {

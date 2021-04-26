@@ -12,7 +12,6 @@ Singly linkedlist **only** hold a refrence to the **next node**.
 
 In implementation you always take a refrence to **head** and **tail** of linked list for quick additons and removals.
 
-![single linkedlist](/Users/rojina/Desktop/DataStructure/Linked list/single linkedlist.png)
 
 ## Doubly linked list
 
@@ -20,7 +19,6 @@ In doubly linked list each node holds a refrence to the **next and previous node
 
 In implementation you always take a refrence to **head** and **tail** of linked list for quick **additons and removals**.
 
-![doubly linkedlist](/Users/rojina/Desktop/DataStructure/Linked list/doubly linkedlist.png)
 
 ------
 
@@ -44,7 +42,6 @@ In implementation you always take a refrence to **head** and **tail** of linked 
 
 Circular linked list making the last node to point to first node and it models repeating event cycles.
 
-![circular linked list](/Users/rojina/Desktop/DataStructure/Linked list/circular linked list.png)
 
 There all several methods for implementing these linked list here is thier name and thier complexity running time.
 

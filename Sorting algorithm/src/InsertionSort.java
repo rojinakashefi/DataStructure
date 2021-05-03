@@ -1,8 +1,53 @@
-ب دقیقاً یک حلقه ثابت برای حلقه for در سطرهای 2-4 بیان کنید و ثابت کنید که این حلقه ثابت است. مدرک شما باید از ساختار اثبات ثابت حلقه ارائه شده در این فصل استفاده کند.
-        ب حلقه ثابت: در شروع هر تکرار حلقه for برای خطوط 2-4 ، زیر مجموعه A [j..n] A [j..n] از عناصر اصلی در A [j..n] A تشکیل شده است [ j..n] قبل از ورود به حلقه اما احتمالاً به ترتیب متفاوت و اولین عنصر A [j] A [j] کوچکترین در میان آنها است.
+/**
+ * InsertionSort
+ * it sorts elements by comparisons with sorted sublist
+ * At first we know our sorted sublist one element
+ * and we know one element is always sorted
+ * we will continue till the sorted sublist size is equal to the array we are sorting
+ * @author rojina kashefi
+ * @since April 2021
+ */
+public class InsertionSort{
+    int [] array;
+    public InsertionSort(int []array){
+        this.array=array;
+        insertionSort();
+        // insertion_sort();
+    }
 
-        مقداردهی اولیه: در ابتدا زیرآرایه فقط آخرین عنصر A [n] A [n] را شامل می شود که به طور پیش پا افتاده کوچکترین عنصر زیر مجموعه است.
+    /**
+     * this insertion sort is implemented by two for
+     * finally when we find the new correct place of element we swap it
+     */
+    public void insertionSort(){
+        for(int i=0;i<array.length-1;i++){
+            for(int j=i+1;j>0;j--){
+                if(array[j]<array[j-1]){
+                    swap(j,j-1);
+                }
+                else
+                    break;
+            }
+        }
+    }
 
-        نگهداری: در هر مرحله A [j] A [j] را با A [j - 1] A [j − 1] مقایسه می کنیم و A [j - 1] A [j − 1] را کوچکترین در میان آنها قرار می دهیم. بعد از تکرار ، طول زیر مجموعه به یک افزایش می یابد و اولین عنصر کوچکترین زیر مجموعه است.
-
-        Termination: حلقه زمانی خاتمه می یابد که j = ij = i. با توجه به بیانیه حلقه ، A [i] A [i] کوچکترین در میان A [i..n] A [i..n] و A [i..n] A [i..n] است قبل از ورود به حلقه ، عناصر موجود در A [i..n] A [i..n] هستند.
+    /**
+     * another implementations of insertion sort
+     */
+    public void insertion_sort(){
+        for(int i=1;i<array.length;i++) {
+            int cur_value = array[i];
+            int j = i - 1;
+            while( j >= 0 && array[ j] >cur_value) {
+                array[j + 1] = array[j];
+                j -= 1;
+            }
+            array[j+1]=cur_value;
+        }
+    }
+    public void swap(int first,int second){
+        int temp=array[first];
+        array[first]=array[second];
+        array[second]=temp;
+    }
+}

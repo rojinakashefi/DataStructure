@@ -1,3 +1,6 @@
+/**
+ * Hanoi Tower
+ */
 public class HanoiTower {
     int n;
     public HanoiTower(int n){

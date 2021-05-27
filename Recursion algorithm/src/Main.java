@@ -2,12 +2,10 @@ import java.util.Arrays;
 
 public class Main {
     public static void main(String[] args) {
-//        int []array={10,9,3,2,4,5,1};
-//        KthSmallestElement kthSmallestElement=new KthSmallestElement(array,1);
-//        System.out.println(kthSmallestElement.kElement());
-//        HanoiTower hanoiTower=new HanoiTower(3);
-//        int []array={1,2,3,5,6,7,8};
-//        BinarySearch binarySearch=new BinarySearch(array,2);
+
+        HanoiTower hanoiTower=new HanoiTower(3);
+        int []array0={1,2,3,5,6,7,8};
+        BinarySearch binarySearch=new BinarySearch(array0,2);
         int[] array = {1, 14, 4, 18, 25, 6, 17, 9, 3, 5, 10, 16, 12, 23, 19, 13, 20, 8, 15, 24, 7, 21, 22, 2, 11};
         System.out.println(Arrays.toString(array));
         System.out.println("K is equal to size of array: (the biggest element): ");

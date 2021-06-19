@@ -1,4 +1,6 @@
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 public class Main {
 
@@ -79,6 +81,26 @@ public class Main {
         System.out.println("=========================");
         System.out.println("peeking element :" + dlStack.peek());
         System.out.println("size is : " + dlStack.getSize());
+        System.out.println(ANSI_RED+"===================================="+ANSI_RESET);
+        System.out.println(ANSI_RED+"Compiler bracket checking"+ANSI_RESET);
+        Scanner scanner = new Scanner(System.in);
+        ArrayList<String> words = new ArrayList<>();
+        String input=" ";
+        while(true){
+            input =scanner.next();
+            if(input.equals("-1")){
+                break;
+            }
+            words.add(input);
+
+        }
+        Brackets brackets = new Brackets(words);
+        if (!brackets.operation()){
+            System.out.println("invalid");
+        }
+        else{
+            System.out.println("valid");
+        }
 
 
 

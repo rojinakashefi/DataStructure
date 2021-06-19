@@ -14,6 +14,8 @@ There all different kind of sorting algorithms here we discuss these :
 
 6. Quick Sort
 
+7. Bogo Sort (randomized algorithm)
+
    ------
 
    ## Selection sort
@@ -168,4 +170,26 @@ In the worst case "N" elements are checked and swapped for every selected elemen
 
     ------
 
+    ## Bogo Sort
     
+    As we all know there is two type of randomized algorithms:
+    
+    **1.Lasvegas Algorithms :** Guarantess correctness ! Runtime is a random variable.
+    
+    **2.Montecarlo Algorithms :** Correctness is a random variable. Runtime is guaranteed!
+    
+     In bogo sort we shuffle our array and we hope it become sorted and each time we check if it is sorted.
+    
+    There is n! possibilities to put elements in array and each operation has O(n) time complexity so the average case is O(n * n!), but if we shuffle each time in same places and not in sorted form the time complexity will be O(∞).
+    
+    **Time complexity:**
+    
+    - Worst Case : O(∞) (since this algorithm has no upper bound)
+    
+    - Average Case: O(n*n!)
+    
+    - Best Case : O(n)(when array given is already sorted)
+    
+      **Auxiliary Space :** O(1)
+    
+      

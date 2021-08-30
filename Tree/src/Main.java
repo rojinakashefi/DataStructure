@@ -1,3 +1,5 @@
+import java.util.Iterator;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -11,7 +13,10 @@ public class Main {
         bst.add(8);
         bst.add(9);
         bst.add(7);
-        bst.remove(12);
-
+        Iterator<Integer> it = bst.Post_Order_traversal();
+        while(it.hasNext()){
+            Integer i = it.next();
+            System.out.println(i);
+        }
     }
 }

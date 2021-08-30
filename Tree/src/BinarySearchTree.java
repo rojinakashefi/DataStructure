@@ -1,3 +1,7 @@
+import java.util.Iterator;
+import java.util.Queue;
+import java.util.Stack;
+
 /**
  * enum for traversal order
  */
@@ -246,25 +250,144 @@ public class BinarySearchTree<T extends Comparable<T>> {
     public T get_root() {
         return root.right.right.value;
     }
-//    public java.util.Iterator<T> TreeTraversalOrder (TreeTraversalOrder tree){
-//        return switch (tree) {
-//            case In_Order -> In_Order_traversal();
-//            case Pre_Order -> Pre_Order_traversal();
-//            case Post_Order -> Post_Order_traversal();
-//            case Level_Order -> Level_Order_traversal();
-//        };
-//    }
-//    public java.util.Iterator<T> In_Order_traversal(){
-//
-//    }
-//    public java.util.Iterator<T> Pre_Order_traversal(){
-//
-//    }
-//    public java.util.Iterator<T> Post_Order_traversal(){
-//
-//    }
-//    public java.util.Iterator<T> Level_Order_traversal(){
-//
-//    }
+
+    /**
+     * we can traverse tree in four order
+     * @param tree as enum of how can we traverse the tree
+     * @return the iterator for iterating the tree way we want
+     */
+    public java.util.Iterator<T> TreeTraversalOrder (TreeTraversalOrder tree){
+        return switch (tree) {
+            case In_Order -> In_Order_traversal();
+            case Pre_Order -> Pre_Order_traversal();
+            case Post_Order -> Post_Order_traversal();
+            case Level_Order -> Level_Order_traversal();
+        };
+    }
+
+    /**
+     * iterate all of the left elements
+     * then return the value of the last one
+     * iterate on the right elements
+     * @return iterator
+     */
+    public java.util.Iterator<T> In_Order_traversal(){
+        Stack<node> stack = new Stack<>();
+        if(root!=null){
+            node tmp = root;
+            //push a root
+            stack.push(root);
+            //pushes all of the left elements first
+            while(tmp.left!=null){
+                stack.push(tmp.left);
+                tmp = tmp.left;
+            }
+        }
+        return new Iterator<T>() {
+            @Override
+            //if stack isnt empty it means there is something we need to check
+            public boolean hasNext() {
+                return !stack.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                //next item we should iterate is the right subtree last item in stack
+                node next = stack.pop();
+                if (next.right!=null){
+                    node start =  next.right;
+                    stack.push(start);
+                    //push the left element of them in stack
+                    while (start.left!=null){
+                        stack.push(start.left);
+                        start = start.left;
+                    }
+                }
+                return next.value;
+            }
+        };
+    }
+
+    /**
+     * first we return the value then we iterate the subtrees
+     * @return iterator
+     */
+    public java.util.Iterator<T> Pre_Order_traversal(){
+        Stack<node> stack = new Stack<>();
+        if(root!=null) {
+            stack.push(root);
+        }
+        return new java.util.Iterator<T>(){
+            @Override
+            public boolean hasNext() {
+               return !stack.isEmpty();
+            }
+            @Override
+            public T next() {
+                node current = stack.pop();
+                //pushes left subtree
+                if(current.left!=null){
+                    stack.push(current.left);
+                }
+                //pushes  left subtree
+                if(current.right!=null){
+                    stack.push(current.right);
+                }
+                return current.value;
+            }
+        };
+    }
+
+    /**
+     * first we iterate both subtrees then we return value
+     * @return the iterator
+     */
+    public java.util.Iterator<T> Post_Order_traversal(){
+        //uses for right and left subtrees both pushing
+        Stack<node> stack1 = new Stack<>();
+        Stack<node> stack2 = new Stack<>();
+		if (size != 0)
+                stack1.push(root);
+		while(!stack1.isEmpty()){
+            node node = stack1.pop();
+            if (node != null){
+                stack2.push(node);
+                if (node.left != null)
+                    stack1.push(node.left);
+                if (node.right != null)
+                    stack1.push(node.right);
+            }
+        }
+
+		return new Iterator<T>(){
+
+            @Override public boolean hasNext(){return !stack2.isEmpty();}
+
+            @Override public T next(){
+                return stack2.pop().value;
+            }
+    };
+
+    }
+    public java.util.Iterator<T> Level_Order_traversal(){
+        Queue<node> queue = new java.util.LinkedList<>();
+        if(root!=null){
+            queue.offer(root);
+        }
+        return new Iterator<T>() {
+            @Override
+            public boolean hasNext() {
+                return !queue.isEmpty();
+            }
+
+            @Override
+            public T next() {
+                node Node = queue.poll();
+                if (Node.left != null) queue.offer(Node.left);
+                if (Node.right != null) queue.offer(Node.right);
+                return Node.value;
+            }
+        };
+  }
 
 }

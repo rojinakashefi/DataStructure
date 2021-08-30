@@ -326,13 +326,13 @@ public class BinarySearchTree<T extends Comparable<T>> {
             public T next() {
                 node current = stack.pop();
                 //pushes left subtree
+                if(current.right!=null){
+                    stack.push(current.right);
+                }
                 if(current.left!=null){
                     stack.push(current.left);
                 }
                 //pushes  left subtree
-                if(current.right!=null){
-                    stack.push(current.right);
-                }
                 return current.value;
             }
         };

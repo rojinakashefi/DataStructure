@@ -13,7 +13,7 @@ public class Main {
         bst.add(8);
         bst.add(9);
         bst.add(7);
-        Iterator<Integer> it = bst.Post_Order_traversal();
+        Iterator<Integer> it = bst.Level_Order_traversal();
         while(it.hasNext()){
             Integer i = it.next();
             System.out.println(i);

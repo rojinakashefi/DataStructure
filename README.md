@@ -1,6 +1,6 @@
 # Data Structure
 
-------
+
 
 In this repository i have implemented some of the most used data structures.
 
@@ -89,7 +89,7 @@ In this repository i have implemented some of the most used data structures.
 - **Tree**
   - [Implemented Binary search Tree](https://github.com/rojinakashefi/DataStructure/blob/main/Tree/src/BinarySearchTree.java)
 
-You can see a brief imformation of what each data structure does in thier readme's. Hope you enjoy :')
+You can see a brief imformation of what each data structure does in their readme's. Hope you enjoy :')
 
 ------
 
